@@ -16,8 +16,13 @@ document.getElementById('muteButton').addEventListener('click', () => {
 
 // 🔥 3. Blow to extinguish the flame
 function blowOutFlame() {
+  console.log("🔥 blowOutFlame triggered");
+
   const flame = document.getElementById('flame');
   const smoke = document.getElementById('smoke');
+
+  console.log("Flame element:", flame);
+  console.log("Smoke element:", smoke);
 
   flame.style.transition = 'transform 0.5s, opacity 0.5s';
   flame.style.transform = 'translateY(-20px)';
@@ -51,7 +56,7 @@ function processStream(stream) {
 
   console.log("Mic input sum:", sum); // 💬 Vezi în consola browserului
 
-  if (sum > 1000) {
+  if (sum > 500) {
     console.log("💨 Blow detected!");
     blowOutFlame();
     audioContext.close();
