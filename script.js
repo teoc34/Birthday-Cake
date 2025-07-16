@@ -45,7 +45,7 @@ function processStream(stream) {
   const bufferLength = analyser.frequencyBinCount;
   const dataArray = new Uint8Array(bufferLength);
 
-  cconst detectBlow = () => {
+  const detectBlow = () => {
   analyser.getByteFrequencyData(dataArray);
   const sum = dataArray.reduce((a, b) => a + b, 0);
 
@@ -59,8 +59,6 @@ function processStream(stream) {
     requestAnimationFrame(detectBlow);
   }
 };
-
-
   detectBlow();
 }
 
