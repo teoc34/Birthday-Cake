@@ -49,7 +49,7 @@ function processStream(stream) {
     analyser.getByteFrequencyData(dataArray);
     const sum = dataArray.reduce((a, b) => a + b, 0);
 
-    if (sum > 9000) {
+    if (sum > 3500) {
       blowOutFlame();
       audioContext.close(); // oprește analiza
     } else {
