@@ -45,17 +45,21 @@ function processStream(stream) {
   const bufferLength = analyser.frequencyBinCount;
   const dataArray = new Uint8Array(bufferLength);
 
-  const detectBlow = () => {
-    analyser.getByteFrequencyData(dataArray);
-    const sum = dataArray.reduce((a, b) => a + b, 0);
+  cconst detectBlow = () => {
+  analyser.getByteFrequencyData(dataArray);
+  const sum = dataArray.reduce((a, b) => a + b, 0);
 
-    if (sum > 1000) {
-      blowOutFlame();
-      audioContext.close(); // oprește analiza
-    } else {
-      requestAnimationFrame(detectBlow); // continuă ascultarea
-    }
-  };
+  console.log("Mic input sum:", sum); // 💬 Vezi în consola browserului
+
+  if (sum > 1000) {
+    console.log("💨 Blow detected!");
+    blowOutFlame();
+    audioContext.close();
+  } else {
+    requestAnimationFrame(detectBlow);
+  }
+};
+
 
   detectBlow();
 }
