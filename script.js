@@ -23,17 +23,16 @@ function blowOutFlame() {
   flame.style.transform = 'translateY(-20px)';
   flame.style.opacity = '0';
 
-  // 👻 active smoke effect
   smoke.classList.add('active');
 
   setTimeout(() => {
     flame.style.transition = 'none';
     flame.style.transform = 'translateY(0)';
     flame.style.opacity = '1';
-
-    smoke.classList.remove('active'); // hide smoke after animation
+    smoke.classList.remove('active');
   }, 3000);
 }
+
 
 
 function processStream(stream) {
@@ -52,14 +51,15 @@ function processStream(stream) {
 
     if (sum > 9000) {
       blowOutFlame();
-      audioContext.close();
+      audioContext.close(); // oprește analiza
     } else {
-      requestAnimationFrame(detectBlow);
+      requestAnimationFrame(detectBlow); // continuă ascultarea
     }
   };
 
   detectBlow();
 }
+
 
 document.getElementById('startButton').addEventListener('click', () => {
   const music = document.getElementById('backgroundMusic');
