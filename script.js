@@ -1,4 +1,3 @@
-// 🎈 1. Personalize greeting from URL
 const urlParams = new URLSearchParams(window.location.search);
 const name = urlParams.get('name');
 const greeting = document.getElementById('greeting');
@@ -7,13 +6,11 @@ if (name) {
   greeting.textContent = `Happy Birthday, ${name}! 🎉`;
 }
 
-// 🔇 2. Toggle mute button
 document.getElementById('muteButton').addEventListener('click', () => {
   const music = document.getElementById('backgroundMusic');
   music.muted = !music.muted;
 });
 
-// 🔥 3. Blow to extinguish the flame
 function blowOutFlame() {
   const flame = document.getElementById('flame');
   const smoke = document.getElementById('smoke');
@@ -36,7 +33,6 @@ function blowOutFlame() {
   }, 3000);
 }
 
-// 🎤 4. Handle microphone stream
 function processStream(stream) {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const source = audioContext.createMediaStreamSource(stream);
@@ -70,10 +66,9 @@ function processStream(stream) {
     }
   };
 
-  detectBlow(); // ✅ Acum apelăm detectBlow ca să pornească
+  detectBlow(); 
 }
 
-// ▶️ 5. On Start button click
 document.getElementById('startButton').addEventListener('click', () => {
   const music = document.getElementById('backgroundMusic');
 
@@ -83,5 +78,5 @@ document.getElementById('startButton').addEventListener('click', () => {
 
   navigator.mediaDevices.getUserMedia({ audio: true })
     .then(processStream)
-    .catch(err => alert("Can't access mic 💔"));
+    .catch(err => alert("Can't access mic"));
 });
